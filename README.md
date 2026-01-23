@@ -92,4 +92,10 @@ This repository reflects the **frozen Planx 4.0 specification baseline**.
 
 Any changes beyond clarification require explicit versioning and review.
 
+## Specification Status
+
+> [!IMPORTANT]
+> **Planx 4.0 specification is frozen. Runtime work resumes.**
+> No behavioral or structural changes are allowed without a new specification version.
+
 ---
