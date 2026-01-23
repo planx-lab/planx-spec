@@ -1,0 +1,15 @@
+PLANX 4.0 – REPOSITORY LAYOUT (IMMUTABLE)
+
+Allowed top-level repositories only:
+
+- planx-engine
+- planx-proto
+- planx-sdk-go
+- planx-sdk-rust
+- planx-sdk-py
+- planx-plugin-template-go
+- planx-plugin-template-rust
+- planx-plugin-template-py
+- planx-plugin-*
+
+No additional repositories or layout changes are allowed.
