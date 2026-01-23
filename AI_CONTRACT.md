@@ -154,3 +154,9 @@ If AI detects a violation in existing code or documentation:
 This contract is enforceable. Violations are failures.
 
 **End of Contract**
+
+---
+
+## Specification Status
+
+"Planx 4.0 specification is frozen. Runtime work resumes."
