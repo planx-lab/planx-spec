@@ -1,0 +1,38 @@
+PLANX 4.0 – REPOSITORY LAYOUT (IMMUTABLE)
+
+Allowed top-level repositories only:
+
+# Core
+- planx-engine
+- planx-proto
+- planx-sdk-go
+- planx-sdk-rust
+- planx-sdk-py
+
+# UI
+- planx-designer
+- planx-admin
+
+# Templates (support Source + Processor + Sink in one repo)
+- planx-plugin-template-go
+- planx-plugin-template-rust
+- planx-plugin-template-py
+
+# Connectors (named by external system, NOT by SPI type)
+- planx-plugin-*  (e.g., planx-plugin-mysql, planx-plugin-kafka, planx-plugin-http)
+
+## Connector repo pattern
+
+planx-plugin-{connector}/
+├── cmd/{source,processor,sink}/main.go
+├── internal/{source,processor,sink}/
+├── manifests/{connector}-{kind}.yaml
+├── examples/
+├── AI.md
+├── README.md
+└── repo.lock
+
+A connector may implement any subset of {source, sink, processor}.
+Repo names use connector identity, never SPI type.
+
+No additional repositories or layout changes are allowed.
