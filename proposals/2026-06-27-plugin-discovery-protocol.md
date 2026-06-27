@@ -336,9 +336,13 @@ No row has two possible authors. The design invariant — "if two components cou
 
 ---
 
-## 12. Open Questions for Review
+## 12. Review Outcome (2026-06-27) — Resolved
 
-1. **Component id namespacing in PipelineSpec:** separate `plugin_id` + `component_id` fields, or a single `"mysql/source"` reference string? (Affects ADR-012 + frozen model.)
-2. **ConfigSchema `OBJECT`/`ARRAY` depth:** allow unbounded nesting, or cap (e.g. depth 2) to keep form rendering predictable?
-3. **Health cadence:** Engine-pull on schedule, or plugin-push? (Lean: pull, simpler.)
-4. **`documentation` field:** URL reference vs embedded Markdown? (Lean: URL — keeps descriptor small.)
+All four open questions decided, plus two additions raised in review. Frozen in **ADR-008..011**:
+
+1. **Component reference in PipelineSpec** → **`plugin_id` + `component_id` as two separate fields** (NOT a `"plugin/component"` string). A Component is a runtime unit, not a sub-path; this supports component rename and natural Marketplace surfacing. → ADR-009 (authorizes the frozen PipelineSpec change).
+2. **ConfigSchema nesting** → **protocol allows UNLIMITED nesting**; Designer supports types in phases (Alpha: object/string/bool/int/enum/secret; Beta: array/nested/map). UI capability never constrains the protocol. → ADR-010.
+3. **Health** → **Engine-pulled** (transport-agnostic; Engine owns scheduling/restart/circuit-breaking, plugin does not push). → ADR-008.
+4. **Documentation** → **embedded `summary` + `examples`** in the descriptor; large prose external via `homepage`. Offline-usable, cacheable, searchable, AI-ready. → ADR-011.
+5. **`ValidateConfig()` lifecycle RPC** *(added in review)* → Designer-initiated live config check (DB / topic / bucket connectivity); Plugin-authoritative, Engine transparently forwards. Strictly stronger than schema-only validation. → ADR-008.
+6. **Capability / visibility additions** *(added in review)* → `configurable` (false ⇒ Designer shows "No configuration required"); `maturity` (STABLE/EXPERIMENTAL/DEPRECATED) + `hidden` for Marketplace/Designer. → ADR-011.
